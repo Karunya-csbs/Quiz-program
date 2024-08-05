@@ -1,0 +1,91 @@
+#include <stdio.h>
+
+#define NUM_QUESTIONS 3
+
+typedef struct {
+    char question[256];
+    char options[4][256];
+    char correctOption;
+} Question;
+
+void ask_question(Question q, int *score) {
+    char answer;
+    printf("%s\n", q.question);
+    for (int i = 0; i < 4; i++) {
+        printf("%c. %s\n", 'A' + i, q.options[i]);
+    }
+    printf("Your answer: ");
+    scanf(" %c", &answer);
+
+    if (answer == q.correctOption) {
+        printf("Correct!\n");
+        (*score)++;
+    } else {
+        printf("Wrong! The correct answer is %c\n", q.correctOption);
+    }
+    printf("\n");
+}
+
+int main() {
+    Question questions[NUM_QUESTIONS] = {
+        {"What is the capital of France?",
+            {"Berlin", "Madrid", "Paris", "Rome"}, 'C'},
+        {"Who wrote 'To Kill a Mockingbird'?",
+            {"Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"}, 'A'},
+        {"What is the largest planet in our solar system?",
+            {"Earth", "Mars", "Jupiter", "Saturn"}, 'C'}
+    };
+
+    int score = 0;
+    for (int i = 0; i < NUM_QUESTIONS; i++) {
+        ask_question(questions[i], &score);
+    }
+
+    printf("You scored %d out of %d\n", score, NUM_QUESTIONS);
+    return 0;
+}#include <stdio.h>
+
+#define NUM_QUESTIONS 3
+
+typedef struct {
+    char question[256];
+    char options[4][256];
+    char correctOption;
+} Question;
+
+void ask_question(Question q, int *score) {
+    char answer;
+    printf("%s\n", q.question);
+    for (int i = 0; i < 4; i++) {
+        printf("%c. %s\n", 'A' + i, q.options[i]);
+    }
+    printf("Your answer: ");
+    scanf(" %c", &answer);
+
+    if (answer == q.correctOption) {
+        printf("Correct!\n");
+        (*score)++;
+    } else {
+        printf("Wrong! The correct answer is %c\n", q.correctOption);
+    }
+    printf("\n");
+}
+
+int main() {
+    Question questions[NUM_QUESTIONS] = {
+        {"What is the capital of France?",
+            {"Berlin", "Madrid", "Paris", "Rome"}, 'C'},
+        {"Who wrote 'To Kill a Mockingbird'?",
+            {"Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"}, 'A'},
+        {"What is the largest planet in our solar system?",
+            {"Earth", "Mars", "Jupiter", "Saturn"}, 'C'}
+    };
+
+    int score = 0;
+    for (int i = 0; i < NUM_QUESTIONS; i++) {
+        ask_question(questions[i], &score);
+    }
+
+    printf("You scored %d out of %d\n", score, NUM_QUESTIONS);
+    return 0;
+}
